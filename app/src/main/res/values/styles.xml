@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="MyBottomNavViewStyle" parent="Widget.MaterialComponents.BottomNavigationView">
+        <item name="android:background">@color/colorPrimary</item> <!-- 바탕색 -->
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="itemTextAppearanceActive">@style/Active</item> <!-- 탭된 아이템의 텍스트 스타일 -->
+        <item name="itemTextAppearanceInactive">@style/Inactive</item> <!-- 탭되지 않은 아이템의 텍스트 스타일 -->
+    </style>
+
+    <style name="Active">
+        <item name="android:textColor">@color/pressed_color</item> <!-- 탭된 아이템의 텍스트 색상 -->
+    </style>
+
+    <style name="Inactive">
+        <item name="android:textColor">@color/normal_color</item> <!-- 탭되지 않은 아이템의 텍스트 색상 -->
+    </style>
+</resources>

@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">Plants</string>
+    <string name="welcomeStr">Your own plant introduce application to help you plan your next vacation!</string>
+    <string name="plants">Plants</string>
+    <string name="select_a_plant">Select a plant below to see more details on each plant and our top exploring recommendations</string>
+</resources>
