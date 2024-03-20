@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:startDestination="@id/plantListFragment"
+    android:id="@+id/nav_graph">
+
+    <fragment
+        android:id="@+id/plantListFragment"
+        android:name="com.plants.assistance.view.PlantListFragment"
+        android:label="PlantListFragment" >
+        <action
+            android:id="@+id/action_plantListFragment_to_plantPageFragment"
+            app:destination="@id/plantPageFragment" />
+        <action
+            android:id="@+id/action_plantListFragment_to_addPlantFragment"
+            app:destination="@id/addPlantFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/plantPageFragment"
+        android:name="com.plants.assistance.view.PlantPageFragment"
+        android:label="PlantPageFragment" />
+
+    <fragment
+        android:id="@+id/addPlantFragment"
+        android:name="com.plants.assistance.view.AddPlantsFragment"
+        android:label="AddPlantFragment" />
+
+    <fragment
+        android:id="@+id/mapsFragment"
+        android:name="com.plants.assistance.view.MapsFragment"
+        android:label="MapsFragment">
+        <action
+            android:id="@+id/action_mapsFragment_to_plantPageFragment"
+            app:destination="@id/plantPageFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/myPlantListFragment"
+        android:name="com.plants.assistance.view.MyPlantListFragment"
+        android:label="MyPlantListFragment" >
+        <action
+            android:id="@+id/action_myPlantListFragment_to_plantPageFragment"
+            app:destination="@id/plantPageFragment" />
+        <action
+            android:id="@+id/action_myPlantListFragment_to_addPlantFragment"
+            app:destination="@id/addPlantFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/weatherFragment"
+        android:name="com.plants.assistance.view.WeatherFragment"
+        android:label="WeatherFragment" />
+
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.plants.assistance.view.ProfileFragment"
+        android:label="ProfileFragment" />
+
+</navigation>

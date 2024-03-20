@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/plantListFragment"
+        android:title="Home" />
+    <item
+        android:id="@+id/myPlantListFragment"
+        android:title="MyPosts" />
+    <item
+        android:id="@+id/mapsFragment"
+        android:title="Map" />
+    <item
+        android:id="@+id/weatherFragment"
+        android:title="Weather" />
+    <item
+        android:id="@+id/profileFragment"
+        android:title="Profile" />
+</menu>

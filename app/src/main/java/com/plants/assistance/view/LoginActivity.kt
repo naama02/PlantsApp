@@ -71,6 +71,9 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun navigateToPlantList() {
+        val intent = Intent(this@LoginActivity, MainActivity::class.java)
+        startActivity(intent)
+        finish()
     }
 
     private fun getUserTypeAndNavigate() {
