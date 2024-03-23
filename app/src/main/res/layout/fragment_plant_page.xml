@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:background="@color/white"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:background="@color/white"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <ImageView
+            android:id="@+id/plantImage"
+            android:layout_marginTop="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="200dp" />
+
+        <EditText
+            android:id="@+id/editTextPlantName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center" />
+
+        <EditText
+            android:id="@+id/editTextPlantDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:lines="5"
+            android:gravity="center"
+            android:hint="Plant Description" />
+
+        <EditText
+            android:id="@+id/editTextDateStarted"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:hint="Date Started" />
+
+        <EditText
+            android:id="@+id/editTextAgeOfPlant"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:hint="Age of Plant" />
+
+        <EditText
+            android:id="@+id/editTextSuggestion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:hint="Suggestion" />
+
+        <EditText
+            android:id="@+id/editTextExpertName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:hint="Expert Name" />
+
+        <fragment
+            android:id="@+id/mapsFragment"
+            android:name="com.google.android.gms.maps.SupportMapFragment"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"  />
+
+        <Button
+            android:id="@+id/buttonSaveEdits"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Save Edits" />
+
+        <Button
+            android:id="@+id/deleteButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Delete" />
+
+    </LinearLayout>
+
+</ScrollView>
