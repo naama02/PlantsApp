@@ -1,87 +1,95 @@
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@color/white"
-    android:padding="16dp"
-    android:gravity="center_horizontal">
+    android:background="@color/white">
 
-    <ImageView
-        android:id="@+id/profile_image"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:layout_marginTop="32dp"
-        android:layout_gravity="center_horizontal" />
-
-
-    <Button
-        android:id="@+id/edit_profile_image_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="edit image" />
-
-    <LinearLayout
+    <androidx.cardview.widget.CardView
+        android:id="@+id/profile_card"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginHorizontal="80dp"
-        android:paddingLeft="20dp"
-        android:paddingRight="20dp"
-        android:background="@drawable/et_bg_round_corner"
-        android:orientation="horizontal">
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:elevation="8dp">
 
-        <RelativeLayout
+        <LinearLayout
+            android:id="@+id/profile_layout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="0.1">
-            <EditText
-                android:id="@+id/profile_name_edittext"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="16dp">
+
+            <ImageView
+                android:id="@+id/profile_image"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:src="@drawable/default_profile_image"
+                android:layout_gravity="center_vertical" />
+
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@color/colorTransparent"
-                android:layout_marginRight="10dp"
-                android:textAlignment="center"
-                android:maxLines="1"
-                android:inputType="textEmailAddress"
-                android:singleLine="true"
-                android:textSize="16dp" />
-        </RelativeLayout>
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginStart="16dp">
 
-    </LinearLayout>
-    <RadioGroup
-        android:id="@+id/radioGroupUserType"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:layout_below="@id/imgProfile"
-        android:orientation="horizontal">
+                <EditText
+                    android:id="@+id/profile_name_edittext"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/edit_text_bg"
+                    android:hint="Enter Name"
+                    android:textAlignment="center"
+                    android:maxLines="1"
+                    android:inputType="textPersonName"
+                    android:textSize="16sp"
+                    android:padding="8dp"
+                    android:layout_marginBottom="8dp"/>
 
-        <RadioButton
-            android:id="@+id/radioButtonRegular"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:checked="true"
-            android:text="Regular" />
+                <RadioGroup
+                    android:id="@+id/radioGroupUserType"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
 
-        <RadioButton
-            android:id="@+id/radioButtonExpert"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Expert" />
-    </RadioGroup>
-    <Button
-        android:id="@+id/edit_profile_name_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="save"
-        android:layout_marginTop="8dp"/>
+                    <RadioButton
+                        android:id="@+id/regular_radio"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="true"
+                        android:text="Regular" />
 
-    <Button
+                    <RadioButton
+                        android:id="@+id/expert_radio"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Expert" />
+                </RadioGroup>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/edit_profile_name_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Save"
+                    android:layout_marginTop="8dp"
+                    app:cornerRadius="4dp"
+                    app:backgroundTint="@color/colorPrimary"
+                    android:textColor="@android:color/white"
+                />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/logout_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="logout"
-        android:layout_marginTop="28dp"/>
+        android:text="Logout"
+        android:layout_below="@id/profile_card"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        app:cornerRadius="4dp" />
 
-</LinearLayout>
+</RelativeLayout>

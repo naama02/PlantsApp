@@ -12,32 +12,35 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_gravity="bottom"
+        android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:padding="8dp">
+        android:padding="16dp"
+        android:layout_gravity="top|center_horizontal">
 
         <EditText
             android:id="@+id/searchName"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:hint="Enter PlantD Name"
+            android:hint="Enter Plant Name"
             android:gravity="center"
-            android:layout_marginBottom="8dp"/>
+            android:background="@drawable/edit_text_bg"
+            android:padding="12dp"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:imeOptions="actionSearch"
+            android:inputType="text"
+            android:layout_marginEnd="8dp"/>
 
-        <LinearLayout
+        <Button
+            android:id="@+id/search_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <Button
-                android:id="@+id/searchButton"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Search"
-                android:textSize="12dp"
-                android:layout_marginStart="4dp"/>
-        </LinearLayout>
+            android:text="Search"
+            android:textSize="14sp"
+            android:textColor="@color/white"
+            android:background="@drawable/bg_rounded_button"/>
+
     </LinearLayout>
+
 </FrameLayout>

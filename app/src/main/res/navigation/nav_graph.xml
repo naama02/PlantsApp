@@ -6,7 +6,7 @@
 
     <fragment
         android:id="@+id/plantListFragment"
-        android:name="com.plants.assistance.view.PlantListFragment"
+        android:name="com.plants.assistance.fragments.PlantListFragment"
         android:label="PlantListFragment" >
         <action
             android:id="@+id/action_plantListFragment_to_plantPageFragment"
@@ -18,17 +18,17 @@
 
     <fragment
         android:id="@+id/plantPageFragment"
-        android:name="com.plants.assistance.view.PlantPageFragment"
+        android:name="com.plants.assistance.fragments.PlantPageFragment"
         android:label="PlantPageFragment" />
 
     <fragment
         android:id="@+id/addPlantFragment"
-        android:name="com.plants.assistance.view.AddPlantsFragment"
+        android:name="com.plants.assistance.fragments.AddPlantsFragment"
         android:label="AddPlantFragment" />
 
     <fragment
         android:id="@+id/mapsFragment"
-        android:name="com.plants.assistance.view.MapsFragment"
+        android:name="com.plants.assistance.fragments.MapsFragment"
         android:label="MapsFragment">
         <action
             android:id="@+id/action_mapsFragment_to_plantPageFragment"
@@ -37,7 +37,7 @@
 
     <fragment
         android:id="@+id/myPlantListFragment"
-        android:name="com.plants.assistance.view.MyPlantListFragment"
+        android:name="com.plants.assistance.fragments.MyPlantListFragment"
         android:label="MyPlantListFragment" >
         <action
             android:id="@+id/action_myPlantListFragment_to_plantPageFragment"
@@ -48,13 +48,13 @@
     </fragment>
 
     <fragment
-        android:id="@+id/weatherFragment"
-        android:name="com.plants.assistance.view.WeatherFragment"
-        android:label="WeatherFragment" />
+        android:id="@+id/plantFragment"
+        android:name="com.plants.assistance.fragments.PlantFragment"
+        android:label="plantFragment" />
 
     <fragment
         android:id="@+id/profileFragment"
-        android:name="com.plants.assistance.view.ProfileFragment"
+        android:name="com.plants.assistance.fragments.ProfileFragment"
         android:label="ProfileFragment" />
 
 </navigation>

@@ -1,18 +1,28 @@
-<?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
+
     <item
         android:id="@+id/plantListFragment"
-        android:title="Home" />
+        android:title="Home"
+        android:icon="@android:drawable/ic_menu_share" />
+
     <item
         android:id="@+id/myPlantListFragment"
-        android:title="MyPosts" />
+        android:title="My Posts"
+        android:icon="@android:drawable/ic_menu_edit" />
+
     <item
         android:id="@+id/mapsFragment"
-        android:title="Map" />
+        android:title="Map"
+        android:icon="@android:drawable/ic_menu_mapmode" />
+
     <item
-        android:id="@+id/weatherFragment"
-        android:title="Weather" />
+        android:id="@+id/plantFragment"
+        android:title="Plant Info"
+        android:icon="@android:drawable/ic_menu_gallery" />
+
     <item
         android:id="@+id/profileFragment"
-        android:title="Profile" />
+        android:title="Profile"
+        android:icon="@android:drawable/ic_menu_myplaces" />
+
 </menu>

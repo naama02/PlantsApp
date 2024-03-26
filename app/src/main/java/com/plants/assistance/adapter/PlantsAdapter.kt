@@ -13,11 +13,11 @@ import com.squareup.picasso.Picasso
 class PlantsAdapter(
     private val fragmentActivity: FragmentActivity,
     var problems: List<PlantProblem>,
-    private val isExpert: Boolean
+    private val isEdit: Boolean
 ) : RecyclerView.Adapter<ProblemViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProblemViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_plant, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_plants, parent, false)
         return ProblemViewHolder(view)
     }
 
@@ -40,15 +40,19 @@ class PlantsAdapter(
             // Pass problem data to ProblemDetailFragment using bundle
             val bundle = Bundle().apply {
                 putString("problemId", problem.key)
+                putString("plantName", problem.title)
                 putString("userEmail", problem.userEmail)
                 putString("imageUrl", problem.imageUrl)
                 putString("description", problem.description)
                 putString("dateStarted", problem.dateStarted)
                 putString("ageOfPlant", problem.ageOfPlant)
                 putString("suggestion", problem.suggestion)
-                if (isExpert) {
+                if (isEdit) {
                     putString("expertName", problem.expertName)
+                }else{
+                    putString("expertName", "")
                 }
+                putBoolean("isEdit", isEdit)
             }
 
             // Navigate to ProblemDetailFragment
