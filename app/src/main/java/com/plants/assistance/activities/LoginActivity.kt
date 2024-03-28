@@ -39,7 +39,7 @@ class LoginActivity : AppCompatActivity() {
 
         val currentUser: FirebaseUser? = mAuth.currentUser
         if (currentUser != null) {
-            navigateToPlantList()
+            getUserTypeAndNavigate()
         }
 
         val buttonRegister: Button = findViewById(R.id.register_button)
