@@ -363,6 +363,7 @@ class PlantPageFragment : Fragment(), OnMapReadyCallback , DatePickerDialog.OnDa
             textPlantDescription.isEnabled = false
             textDateStarted.isEnabled = false
             textAgeOfPlant.isEnabled = false
+
             deleteButton.visibility = View.GONE
             imageView.isEnabled = false
         }else{
@@ -373,8 +374,12 @@ class PlantPageFragment : Fragment(), OnMapReadyCallback , DatePickerDialog.OnDa
                 map.addMarker(MarkerOptions().position(latLng))
             }
         }
-        if (getUserType().equals("Regular"))
+        if (getUserType().equals("Regular")){
             suggestionEditText.visibility = View.GONE
+        }else{
+            saveEdits.setText(" Send / Update Suggestion");
+        }
+
     }
 
     override fun onMapReady(p0: GoogleMap) {

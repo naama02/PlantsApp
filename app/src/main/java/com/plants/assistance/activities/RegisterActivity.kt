@@ -143,7 +143,7 @@ class RegisterActivity : AppCompatActivity() {
         val userData = hashMapOf(
             "userType" to userType
         )
-
+        setUserType(userType)
         userRef.set(userData)
             .addOnSuccessListener {
             }
