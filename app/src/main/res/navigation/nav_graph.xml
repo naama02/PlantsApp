@@ -24,7 +24,11 @@
     <fragment
         android:id="@+id/addPlantFragment"
         android:name="com.plants.assistance.fragments.AddPlantsFragment"
-        android:label="AddPlantFragment" />
+        android:label="AddPlantFragment" >
+        <action
+            android:id="@+id/action_addPlantFragment_to_myPlantListFragment"
+            app:destination="@id/myPlantListFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/mapsFragment"
@@ -45,6 +49,15 @@
         <action
             android:id="@+id/action_myPlantListFragment_to_addPlantFragment"
             app:destination="@id/addPlantFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/mySuggestionListFragment"
+        android:name="com.plants.assistance.fragments.MySuggestionListFragment"
+        android:label="MySuggestionListFragment" >
+        <action
+            android:id="@+id/action_mySuggestionListFragment_to_plantPageFragment"
+            app:destination="@id/plantPageFragment" />
     </fragment>
 
     <fragment

@@ -28,11 +28,13 @@ import com.google.android.libraries.places.api.model.Place
 import com.google.android.libraries.places.widget.Autocomplete
 import com.google.android.libraries.places.widget.AutocompleteActivity
 import com.google.android.libraries.places.widget.model.AutocompleteActivityMode
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import com.plants.assistance.R
+import com.plants.assistance.activities.LoginActivity
 import com.plants.assistance.db.MyDatabse
 import com.plants.assistance.model.PlantProblem
 import com.squareup.picasso.Picasso
@@ -141,11 +143,38 @@ class AddPlantsFragment : Fragment(), OnMapReadyCallback , DatePickerDialog.OnDa
         val mapFragment = childFragmentManager.findFragmentById(R.id.mapsFragment) as SupportMapFragment?
         mapFragment?.getMapAsync(this)
     }
+    override fun onResume() {
+        super.onResume()
+        hideBottomNavigationBar()
+    }
 
+    override fun onPause() {
+        super.onPause()
+        showBottomNavigationBar()
+    }
+
+    private fun hideBottomNavigationBar() {
+        val bottomNavigationView = requireActivity().findViewById<BottomNavigationView>(R.id.bottom_navigation)
+        bottomNavigationView.visibility = View.GONE
+        val bottomNavigationExpertView = requireActivity().findViewById<BottomNavigationView>(R.id.bottom_navigation_expert)
+        bottomNavigationExpertView.visibility = View.GONE
+    }
+
+    private fun showBottomNavigationBar() {
+        if( LoginActivity.getUserType().equals("Regular") ) {
+            val bottomNavigationView = requireActivity().findViewById<BottomNavigationView>(R.id.bottom_navigation)
+            bottomNavigationView.visibility = View.VISIBLE
+        }else{
+            val bottomNavigationExpertView = requireActivity().findViewById<BottomNavigationView>(R.id.bottom_navigation_expert)
+            bottomNavigationExpertView.visibility = View.VISIBLE
+        }
+    }
     private fun setupListeners() {
         problemImageView.setOnClickListener { selectImage() }
         addProblemButton.setOnClickListener { uploadProblemData() }
-        cancelButton.setOnClickListener { NavHostFragment.findNavController(this).popBackStack() }
+        cancelButton.setOnClickListener {
+            NavHostFragment.findNavController(this).popBackStack()
+        }
         map_edittext.setOnClickListener { selectAddress() }
         dateStartedEditText.setOnClickListener {   showDatePickerDialog()  }
     }
@@ -181,6 +210,7 @@ class AddPlantsFragment : Fragment(), OnMapReadyCallback , DatePickerDialog.OnDa
         val problemDescription = problemDescriptionEditText.text.toString().trim()
         val dateStarted = dateStartedEditText.text.toString().trim()
         val ageOfPlant = ageOfPlantEditText.text.toString().trim()
+        val address = map_edittext.text.toString().trim()
 
         if (problemTitle.isEmpty() || problemDescription.isEmpty() || selectedImageUri == null || selectedLocation == null || dateStarted.isEmpty() || ageOfPlant.isEmpty()) {
             Toast.makeText(requireContext(), "All fields and location must be filled", Toast.LENGTH_SHORT).show()
@@ -204,18 +234,16 @@ class AddPlantsFragment : Fragment(), OnMapReadyCallback , DatePickerDialog.OnDa
                         problem["latitude"] = selectedLocation!!.latitude
                         problem["longitude"] = selectedLocation!!.longitude
                         problem["userEmail"] = FirebaseAuth.getInstance().currentUser?.email!!
-
                         problem["dateStarted"] = dateStarted
                         problem["ageOfPlant"] = ageOfPlant
                         problem["suggestion"] = ""
-                        problem["expertName"] = ""
+                        problem["address"] = address
 
-                        firestore.collection("Problems")
+                        firestore.collection("Plants")
                             .add(problem)
                             .addOnSuccessListener { documentReference ->
                                 progressDialog.dismiss()
                                 Toast.makeText(requireContext(), "Problem added successfully", Toast.LENGTH_SHORT).show()
-                                NavHostFragment.findNavController(this).popBackStack()
 
                                 // Optionally, you can also save this problem data to Room database for offline access
                                 saveProblemToLocalDatabase(
@@ -230,9 +258,10 @@ class AddPlantsFragment : Fragment(), OnMapReadyCallback , DatePickerDialog.OnDa
                                         dateStarted,
                                         ageOfPlant,
                                         "",
-                                        ""
+                                        address
                                     )
                                 )
+                                NavHostFragment.findNavController(this).popBackStack()
                             }
                             .addOnFailureListener { e ->
                                 progressDialog.dismiss()

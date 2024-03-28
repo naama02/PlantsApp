@@ -12,6 +12,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.NavHostFragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
@@ -21,7 +22,7 @@ import com.plants.assistance.db.MyDatabse
 import com.plants.assistance.model.PlantViewModel
 import com.plants.assistance.model.PlantViewModelFactory
 
-class PlantListFragment : Fragment() {
+class MySuggestionListFragment : Fragment() {
     private lateinit var viewModel: PlantViewModel
     private lateinit var recyclerView: RecyclerView
 
@@ -38,16 +39,16 @@ class PlantListFragment : Fragment() {
             layoutManager = GridLayoutManager(context, 1)
             adapter = PlantsAdapter(requireActivity(), mutableListOf(), false)
         }
+
         val addButton: Button = rootView.findViewById(R.id.add_button)
         addButton.visibility = View.GONE
-
         rootView.findViewById<TextView>(R.id.titleTextView).text = getString(R.string.plants)
 
     }
 
     private fun setupViewModel() {
-        val myDB = MyDatabse.getInstance(requireContext().applicationContext)
-        val factory = PlantViewModelFactory(myDB.plantProblemDao())
+        val db = MyDatabse.getInstance(requireContext().applicationContext)
+        val factory = PlantViewModelFactory(db.plantProblemDao())
         viewModel = ViewModelProvider(this, factory).get(PlantViewModel::class.java)
 
         viewModel.allProblems.observe(viewLifecycleOwner, Observer { problems ->
@@ -56,7 +57,11 @@ class PlantListFragment : Fragment() {
         })
 
         if (isOnline()) {
-            viewModel.fetchProblemsFromFirestore()
+            FirebaseAuth.getInstance().currentUser?.displayName?.let {
+                viewModel.fetchProblemsFromFirestore(
+                  suggestion =   it
+                )
+            }
         } else {
             Toast.makeText(context, "Offline: Displaying cached plants", Toast.LENGTH_SHORT).show()
         }

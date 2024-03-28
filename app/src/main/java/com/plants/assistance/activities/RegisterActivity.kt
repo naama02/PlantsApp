@@ -18,6 +18,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import com.plants.assistance.R
+import com.plants.assistance.activities.LoginActivity.Companion.setUserType
 import java.io.IOException
 
 class RegisterActivity : AppCompatActivity() {
@@ -100,6 +101,7 @@ class RegisterActivity : AppCompatActivity() {
                                                                         Toast.LENGTH_SHORT
                                                                 ).show()
                                                                 saveUserTypeToFirestore(user.uid, userType)
+                                                                setUserType(userType)
                                                                 val intent = Intent(this@RegisterActivity, MainActivity::class.java)
                                                                 startActivity(intent)
                                                                 finish() // Finish current activity

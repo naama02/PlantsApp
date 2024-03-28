@@ -15,8 +15,8 @@ data class PlantProblem(
         var longitude: Double,
         var dateStarted: String,
         var ageOfPlant: String,
-        var suggestion: String? = null,
-        var expertName: String? = null // ExpertName field 추가
+        var suggestion: String,
+        var address: String? = null
 ) {
 
         constructor(
@@ -29,8 +29,8 @@ data class PlantProblem(
                 longitude: Double,
                 dateStarted: String,
                 ageOfPlant: String,
-                suggestion: String? = null,
-                expertName: String? = null
-        ) : this(0, key, userEmail, imageUrl,title,  description, latitude, longitude, dateStarted, ageOfPlant, suggestion, expertName)
+                suggestion: String,
+                address: String? = null
+        ) : this(0, key, userEmail, imageUrl,title,  description, latitude, longitude, dateStarted, ageOfPlant, suggestion, address)
 }
 

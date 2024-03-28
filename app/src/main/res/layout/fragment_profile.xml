@@ -37,6 +37,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/edit_text_bg"
+                    android:layout_marginTop="10dp"
                     android:hint="Enter Name"
                     android:textAlignment="center"
                     android:maxLines="1"
@@ -45,32 +46,14 @@
                     android:padding="8dp"
                     android:layout_marginBottom="8dp"/>
 
-                <RadioGroup
-                    android:id="@+id/radioGroupUserType"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
 
-                    <RadioButton
-                        android:id="@+id/regular_radio"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:checked="true"
-                        android:text="Regular" />
-
-                    <RadioButton
-                        android:id="@+id/expert_radio"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Expert" />
-                </RadioGroup>
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/edit_profile_name_button"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Save"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="28dp"
                     app:cornerRadius="4dp"
                     app:backgroundTint="@color/colorPrimary"
                     android:textColor="@android:color/white"

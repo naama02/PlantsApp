@@ -6,9 +6,14 @@
         android:icon="@android:drawable/ic_menu_share" />
 
     <item
-        android:id="@+id/myPlantListFragment"
-        android:title="My Posts"
+        android:id="@+id/mySuggestionListFragment"
+        android:title="My Suggestions"
         android:icon="@android:drawable/ic_menu_edit" />
+
+    <item
+        android:id="@+id/mapsFragment"
+        android:title="Map"
+        android:icon="@android:drawable/ic_menu_mapmode" />
 
     <item
         android:id="@+id/plantFragment"

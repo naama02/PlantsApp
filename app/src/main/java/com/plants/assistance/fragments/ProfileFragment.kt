@@ -32,9 +32,6 @@ class ProfileFragment : Fragment() {
     private lateinit var storageReference: StorageReference
     private lateinit var edtName: EditText
     private var selectedImageUri: Uri? = null
-    private lateinit var userTypeRadioGroup: RadioGroup
-    private lateinit var normalUserRadioButton: RadioButton
-    private lateinit var expertUserRadioButton: RadioButton
     companion object {
         private const val REQUEST_CODE_GALLERY = 1
     }
@@ -69,9 +66,6 @@ class ProfileFragment : Fragment() {
         val btnUpdate = view.findViewById<Button>(R.id.edit_profile_name_button)
         val btnLogout = view.findViewById<Button>(R.id.logout_button)
         edtName = view.findViewById(R.id.profile_name_edittext)
-        userTypeRadioGroup = view.findViewById(R.id.radioGroupUserType)
-        normalUserRadioButton = view.findViewById(R.id.regular_radio)
-        expertUserRadioButton = view.findViewById(R.id.expert_radio)
         // Initialize with current user info
         val user = mAuth.currentUser
         user?.let {
@@ -97,7 +91,7 @@ class ProfileFragment : Fragment() {
 
     private fun updateProfile() {
         val name = edtName.text.toString().trim()
-        val userType = if (normalUserRadioButton.isChecked) "Normal User" else "Expert User"
+
         filePath?.let { fileUri ->
             val ref = storageReference.child("profileImages/${mAuth.currentUser?.uid}")
             ref.putFile(fileUri).addOnSuccessListener { taskSnapshot ->
@@ -120,6 +114,7 @@ class ProfileFragment : Fragment() {
             // Update name only
             val profileUpdate = UserProfileChangeRequest.Builder()
                     .setDisplayName(name)
+
                     .build()
             mAuth.currentUser?.updateProfile(profileUpdate)?.addOnCompleteListener { task ->
                 if (task.isSuccessful) {

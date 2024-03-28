@@ -40,8 +40,8 @@ class MyPlantListFragment : Fragment() {
             adapter = PlantsAdapter(requireActivity(), mutableListOf(), true)
         }
         rootView.findViewById<Button>(R.id.add_button).setOnClickListener {
-            NavHostFragment.findNavController(this)
-                .navigate(R.id.action_myPlantListFragment_to_addPlantFragment)
+            val navController = requireActivity().supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
+            navController.navController.navigate(R.id.addPlantFragment)
         }
 
         rootView.findViewById<TextView>(R.id.titleTextView).text = getString(R.string.plants)
@@ -60,8 +60,8 @@ class MyPlantListFragment : Fragment() {
 
         if (isOnline()) {
             FirebaseAuth.getInstance().currentUser?.email?.let {
-                viewModel.fetchMyProblemsForUserEmail(
-                    it
+                viewModel.fetchProblemsFromFirestore(
+                    userEmail =  it
                 )
             }
         } else {

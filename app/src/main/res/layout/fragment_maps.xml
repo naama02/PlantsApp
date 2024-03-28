@@ -15,6 +15,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:padding="16dp"
+        android:visibility="gone"
         android:layout_gravity="top|center_horizontal">
 
         <EditText

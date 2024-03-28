@@ -29,6 +29,7 @@ class MapsFragment : Fragment() {
 
     private val callback = OnMapReadyCallback { googleMap ->
         map = googleMap
+        map.getUiSettings().setZoomControlsEnabled(true);
         setupMapListeners()
         loadPlants()
     }
@@ -78,17 +79,22 @@ class MapsFragment : Fragment() {
             val document = marker.tag as? QueryDocumentSnapshot
             document?.let {
                 val plantId = document.id
-                val plantName = document.getString("plantName") ?: ""
+                val plantName = document.getString("title") ?: ""
                 val userEmail = document.getString("userEmail") ?: ""
                 val imageUrl = document.getString("imageUrl") ?: ""
                 val description = document.getString("description") ?: ""
                 val latitude = document.getDouble("latitude") ?: 0.0
                 val longitude = document.getDouble("longitude") ?: 0.0
+                val address = document.getString("address") ?: ""
+                bundle.putString("dateStarted", document.getString("dateStarted") ?: "")
+                bundle.putString("ageOfPlant",document.getString("ageOfPlant") ?: "")
+                bundle.putString("suggestion", document.getString("suggestion") ?: "")
                 bundle.putString("plantId", plantId)
                 bundle.putString("plantName", plantName)
                 bundle.putString("userEmail", userEmail)
                 bundle.putString("imageUrl", imageUrl)
                 bundle.putString("description", description)
+                bundle.putString("address", address)
                 bundle.putDouble("latitude", latitude)
                 bundle.putDouble("longitude", longitude)
                 NavHostFragment.findNavController(this)
@@ -100,13 +106,12 @@ class MapsFragment : Fragment() {
 
     private fun loadPlants() {
         val db = FirebaseFirestore.getInstance()
-
         db.collection("Plants").get().addOnCompleteListener { task ->
             if (task.isSuccessful) {
                 try {
                     for (document in task.result!!) {
                         val plantId = document.id
-                        val plantName = document.getString("plantName") ?: ""
+                        val plantName = document.getString("title") ?: ""
                         val latitude = document.getDouble("latitude") ?: 0.0
                         val longitude = document.getDouble("longitude") ?: 0.0
 

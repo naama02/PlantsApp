@@ -34,12 +34,12 @@ class PlantsAdapter(
 
         // Set problem title
         holder.problemName.text = problem.title
-
+        holder.plantAge.text = problem.ageOfPlant + " years"
         // Set click listener to navigate to problem detail fragment
         holder.itemView.setOnClickListener {
             // Pass problem data to ProblemDetailFragment using bundle
             val bundle = Bundle().apply {
-                putString("problemId", problem.key)
+                putString("plantId", problem.key)
                 putString("plantName", problem.title)
                 putString("userEmail", problem.userEmail)
                 putString("imageUrl", problem.imageUrl)
@@ -47,11 +47,7 @@ class PlantsAdapter(
                 putString("dateStarted", problem.dateStarted)
                 putString("ageOfPlant", problem.ageOfPlant)
                 putString("suggestion", problem.suggestion)
-                if (isEdit) {
-                    putString("expertName", problem.expertName)
-                }else{
-                    putString("expertName", "")
-                }
+                putString("address", problem.address)
                 putBoolean("isEdit", isEdit)
             }
 

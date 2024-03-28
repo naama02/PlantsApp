@@ -46,6 +46,11 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:padding="16dp">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:text="Plant Name:"/>
                 <EditText
                     android:id="@+id/plantname_textview"
                     android:layout_width="match_parent"
@@ -56,6 +61,11 @@
                     android:padding="10dp"
                     android:layout_marginBottom="10dp"
                     android:textStyle="bold" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:text="Description:"/>
                 <EditText
                     android:id="@+id/problemdescription_textview"
                     android:layout_width="match_parent"
@@ -64,7 +74,11 @@
                     android:background="@drawable/edit_text_bg"
                     android:padding="10dp"
                     android:textSize="22sp" />
-
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:text="Date Started:"/>
                 <EditText
                     android:id="@+id/date_edittext"
                     android:editable="false"
@@ -75,7 +89,11 @@
                     android:background="@drawable/edit_text_bg"
                     android:padding="10dp"
                     android:textSize="22sp" />
-
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:text="Age of Plant:"/>
                 <EditText
                     android:id="@+id/age_edittext"
                     android:layout_width="match_parent"
@@ -86,6 +104,11 @@
                     android:padding="10dp"
                     android:layout_marginBottom="16dp"
                     android:textSize="22sp" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:text="Address:"/>
                 <EditText
                     android:id="@+id/map_edittext"
                     android:editable="false"
